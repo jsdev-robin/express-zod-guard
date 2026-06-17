@@ -1,7 +1,6 @@
-import { HTTPException } from 'express-http-exception';
-import { StatusCodes } from 'http-status-codes';
-
 import { NextFunction, Request, Response } from 'express';
+import createError from 'http-errors';
+import { StatusCodes } from 'http-status-codes';
 import { ZodError, ZodType } from 'zod';
 
 type ValidationSchemas = {
@@ -13,7 +12,6 @@ type ValidationSchemas = {
 const safeParse = <T>(schema: ZodType<T>, data: unknown): T => {
   const result = schema.safeParse(data);
   if (!result.success) throw result.error;
-
   return result.data;
 };
 
@@ -26,20 +24,14 @@ export const validationRequest = (schemas: ValidationSchemas) => {
         req.query = safeParse(schemas.query, req.query) as typeof req.query;
       if (schemas.params)
         req.params = safeParse(schemas.params, req.params) as typeof req.params;
-
       next();
     } catch (error) {
       if (error instanceof ZodError) {
         const firstIssue = error.issues[0];
-
         return next(
-          new HTTPException(
-            firstIssue.message,
-            StatusCodes.UNPROCESSABLE_ENTITY,
-          ),
+          createError(StatusCodes.UNPROCESSABLE_ENTITY, firstIssue.message),
         );
       }
-
       next(error);
     }
   };

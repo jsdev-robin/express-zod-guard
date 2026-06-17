@@ -11,15 +11,15 @@ importers:
       express:
         specifier: ^4 || ^5
         version: 5.2.1
-      express-http-exception:
-        specifier: ^1.1.0
-        version: 1.1.0
+      http-errors:
+        specifier: ^2.0.1
+        version: 2.0.1
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
       zod:
         specifier: ^3 || ^4
-        version: 4.3.6
+        version: 4.4.3
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -27,6 +27,9 @@ importers:
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
+      '@types/http-errors':
+        specifier: ^2.0.5
+        version: 2.0.5
       '@types/node':
         specifier: ^25.5.0
         version: 25.5.0
@@ -353,9 +356,6 @@ packages:
   etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
-
-  express-http-exception@1.1.0:
-    resolution: {integrity: sha512-HJs9qlib0gvNAy31voK3xY4FyZEnXDBjArdI/IFXuCkJqa9f0PslfM7z8LxuFCKkAc8fdnNdTfZSDYmekrbTXQ==}
 
   express@5.2.1:
     resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
@@ -720,8 +720,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
 snapshots:
 
@@ -1069,8 +1069,6 @@ snapshots:
   esutils@2.0.3: {}
 
   etag@1.8.1: {}
-
-  express-http-exception@1.1.0: {}
 
   express@5.2.1:
     dependencies:
@@ -1447,4 +1445,4 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@4.3.6: {}
+  zod@4.4.3: {}
